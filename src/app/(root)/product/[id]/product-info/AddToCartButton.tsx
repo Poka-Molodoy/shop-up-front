@@ -26,10 +26,10 @@ export function AddToCartButton({ product }: AddToCartButtonProps) {
 				currentElement
 					? removeFromCart({ id: currentElement.id })
 					: addToCart({
-							product,
-							quantity: 1,
-							price: product.price
-						})
+						product,
+						quantity: 1,
+						price: product.price
+					})
 			}
 		>
 			{currentElement ? 'Удалить из корзины' : 'Добавить в корзину'}

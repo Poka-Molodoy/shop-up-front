@@ -33,10 +33,27 @@ export const cartSlice = createSlice({
 		) => {
 			const { id, type } = action.payload
 			const item = state.items.find(item => item.id === id)
-			if (item) type === 'plus' ? item.quantity++ : item.quantity--
+			if (item) {
+				if (type === 'minus') {
+					if (item.quantity === 1) {
+						state.items = state.items.filter(
+							item => item.id !== action.payload.id
+						)
+					} else {
+						// Otherwise, just decrement the quantity
+						item.quantity--;
+					}
+				} else if (type === 'plus') {
+					// Increment the quantity
+					item.quantity++;
+				}
+			}
 		},
 		reset: state => {
 			state.items = []
 		}
 	}
 })
+
+export const { addToCart, removeFromCart, changeQuantity, reset } = cartSlice.actions;
+export default cartSlice.reducer;

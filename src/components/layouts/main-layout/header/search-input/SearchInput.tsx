@@ -19,7 +19,7 @@ export function SearchInput() {
 	return (
 		<div className={styles.form}>
 			<Input
-				placeholder='Поиск товаров'
+				placeholder='Вперед к новым приключениям!'
 				value={searchTerm}
 				onChange={e => setSearchTerm(e.target.value)}
 			/>
